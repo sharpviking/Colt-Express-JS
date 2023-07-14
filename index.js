@@ -11,8 +11,13 @@ const morgan = require('morgan');
 // })
 
 app.use(morgan('common'));
-app.use((req, res) => {
-    res.send('Hijacked by my app.use!')
+app.use((req, res, next) => {
+    console.log('This is my middleware!')
+    next();
+})
+app.use((req, res, next) => {
+    console.log('This is my second middleware!')
+    next();
 })
 
 app.get('/', (req, res) => {

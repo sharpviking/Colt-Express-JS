@@ -2,11 +2,18 @@ const express = require("express");
 
 const app = express();
 
+const morgan = require('morgan');
+
 // app.use((req, res) => {
 //     console.log("We got a new request")
 //     res.send("Helllo , EWe got your request! This is the response!")
 
 // })
+
+app.use(morgan('common'));
+app.use((req, res) => {
+    res.send('Hijacked by my app.use!')
+})
 
 app.get('/', (req, res) => {
     res.send("This is home page")

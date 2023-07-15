@@ -10,9 +10,9 @@ const morgan = require('morgan');
 
 // })
 
-app.use(morgan('common'));
+app.use(morgan('tiny'));
 app.use((req, res, next) => {
-    console.log('This is my middleware!')
+    console.log(req.method.toUpperCase().req.path);
     next();
 })
 app.use((req, res, next) => {
@@ -57,6 +57,7 @@ app.get('/search', (req, res) => {
 app.get('*', (req, res) => {
     res.send(`I dont know that path!`)
 })
+
 
 
 
